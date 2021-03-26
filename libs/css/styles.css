@@ -123,6 +123,7 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     text-align: center;
+    max-width: 600px;
 }
 
 #about-modal {
