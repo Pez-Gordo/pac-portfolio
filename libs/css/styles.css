@@ -5,6 +5,7 @@ body {
 }
 
 .container{
+    padding-top: 30px;
     display: flex;
     margin: auto auto;
     flex-wrap: wrap;
@@ -115,7 +116,8 @@ body {
     border-radius: 3px;
 }
 
-#about-modal {
+#intro-modal {
+    padding-top: 30px;
     display: flex;
     margin: auto auto;
     flex-wrap: wrap;
@@ -123,6 +125,60 @@ body {
     text-align: center;
 }
 
-#closeAboutModal {
+#about-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#skills-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#projects-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#stuff-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#contact-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#gameover-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+.closeButton {
     background-color: #626262;
 }

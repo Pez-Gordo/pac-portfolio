@@ -11,8 +11,25 @@
 
 </head>
 <body>
-    
+
+    <!-- Intro -->
+    <div id="intro-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/intro.png" alt="">
             
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Welcome to my creative Pac-Portfolio. Rush over to safe colored shelters where you would be able to relax and check different sections of my portfolio. If you don't feel like eating pac-dots you can skip the action by clicking in the links below. Good luck in any case and I hope to hear from you. Enjoy!</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeIntroModal" class="closeButton" data-dismiss="modal">
+                <img src="./libs/img/buttons/start.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
+
     <!-- About -->
     <div id="about-modal">
         <div class="modal-header">
@@ -25,7 +42,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeAboutModal" data-dismiss="modal">
+            <button id="closeAboutModal" class="closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
@@ -43,7 +60,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeSkillsModal" data-dismiss="modal">
+            <button id="closeSkillsModal" class="closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
@@ -61,7 +78,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeProjectsModal" data-dismiss="modal">
+            <button id="closeProjectsModal" class="closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
@@ -79,11 +96,12 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeStuffModal" data-dismiss="modal">
+            <button id="closeStuffModal" class="closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
     </div>
+
     <!-- Contact -->
     <div id="contact-modal">
         <div class="modal-header">
@@ -96,59 +114,28 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeContactModal" data-dismiss="modal">
+            <button id="closeContactModal" class="closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
     </div>
 
-
-    <!-- === === === Record Score Modal === === === -->
-
-    <div id="floatingDiv">
-        <form method="POST" id="floatingForm">
-            
-		    <label>Player: (Max: 12)</label>
-		    <p></p>
-		    <input type="text" name="usuario" id="usuario" maxlenght=12 pattern="{1,12}" required>
-		    <p></p>
-		    <label>Say something!! (Max: 120)</label>
-		    <p></p>
-		    <input type="text" name="say" id="say" maxlength=120>
-            <p></p>
-            <label hidden>Score</label>
-		    <p></p>
-            <input type="number" name="score" id="score" hidden>
-		    <p></p>
-		    <button id="btnguardar">Send</button>
-            <br><br>
-            <br><br>
-        </form>
-
-        <button id="btnconsulta" >See Ranking</button>
-
+    <!-- Game Over -->
+    <div id="gameover-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/gameover.png" alt="">
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Thank you for playing</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="playagain" class="closeButton" data-dismiss="modal">
+                <img src="./libs/img/buttons/play-again.png" alt="play again">
+            </button>
+        </div>
     </div>
-
-
-    <!-- === === === Modal Ranking === === === -->
-
-    <div id="rankingTable">
-        <h2>Ranking</h2>
-        <table id="ranking">
-            <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>Comment</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody id="tbodyRanking">
-
-            </tbody>
-        </table>
-        <button id="playAgain" onclick="window.location.reload();">Play Again !</button>
-    </div>
-
 
     <!-- === === === Game Container === === === -->
 
@@ -156,11 +143,11 @@
         <img id="title" src="./libs/img/titles/pac-portfolio.png" alt="pacfolio">
         <div id="grid"></div>
         <h3>
-            <img src="./libs/img/buttons/aboutme-small.png" alt="about me">
-            <img src="./libs/img/buttons/skills-small.png" alt="skills">
-            <img src="./libs/img/buttons/projects-small.png" alt="projects">
-            <img src="./libs/img/buttons/stuff-small.png" alt="stuff">
-            <img src="./libs/img/buttons/contact-small.png" alt="contact">
+            <button id="showAbout" class="closeButton"><img src="./libs/img/buttons/aboutme-small.png" alt="about me"></button>
+            <button id="showSkills" class="closeButton"><img src="./libs/img/buttons/skills-small.png" alt="skills"></button>
+            <button id="showProjects" class="closeButton"><img src="./libs/img/buttons/projects-small.png" alt="projects"></button>
+            <button id="showStuff" class="closeButton"><img src="./libs/img/buttons/stuff-small.png" alt="stuff"></button>
+            <button id="showContact" class="closeButton"><img src="./libs/img/buttons/contact-small.png" alt="contact"></button>
         </h3>
 
     </div>

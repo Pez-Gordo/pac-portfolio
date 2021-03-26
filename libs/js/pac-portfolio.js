@@ -1,17 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const introModal = document.getElementById('intro-modal')
     const aboutModal = document.getElementById('about-modal')
     const skillsModal = document.getElementById('skills-modal')
     const projectsModal = document.getElementById('projects-modal')
     const stuffModal = document.getElementById('stuff-modal')
     const contactModal = document.getElementById('contact-modal')
+    const gameoverModal = document.getElementById('gameover-modal')
     aboutModal.style.display = 'none'
     skillsModal.style.display = 'none'
     projectsModal.style.display = 'none'
     stuffModal.style.display = 'none'
     contactModal.style.display = 'none'
+    introModal.style.display = 'none'
+    gameoverModal.style.display = 'none'
     const container = document.getElementById('container')
-    const scoreDisplay = document.getElementById('score')
+    //const scoreDisplay = document.getElementById('score')
     const width = 28
     let ghostPoints = 0
     let score = 0
@@ -80,11 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var modalForm = document.getElementById("floatingDiv")
     //var container = document.getElementById("container")
 
-    rankingTable.style.display = "none"
-    modalForm.style.display = "none"
-
-
-
     const squares = []
   
     //create your board
@@ -117,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     createBoard()
+    container.style.display = 'none'
+    introModal.style.display = 'flex'
   
   
     //create Characters
@@ -183,15 +184,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function pacDotEaten() {
       if (squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
         score++
-        scoreDisplay.innerHTML = score
         squares[pacmanCurrentIndex].classList.remove('pac-dot')
+        console.log(score)
       }
     }
   
     //what happens when you eat a power-pellet
     function powerPelletEaten() {
       if (squares[pacmanCurrentIndex].classList.contains('power-pellet')) {
-        score +=10
         ghosts.forEach(ghost => ghost.isScared = true)
         setTimeout(unScareGhosts, 10000)
         squares[pacmanCurrentIndex].classList.remove('power-pellet')
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.startIndex = startIndex
         this.speed = speed
         this.currentIndex = startIndex
-        this.isScared = false
+        this.isScared = true
         this.timerId = NaN
       }
     }
@@ -301,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if(ghost.isScared && squares[ghost.currentIndex].classList.contains('pac-man')) {
             squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
             ghost.currentIndex = ghost.startIndex
-            //score +=100
             ghostPoints += 100
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
           }
@@ -316,30 +315,33 @@ document.addEventListener('DOMContentLoaded', () => {
         !squares[pacmanCurrentIndex].classList.contains('scared-ghost')) {
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', movePacman)
-        setTimeout(function(){ alert("Game Over"); }, 500)
-        
-        document.getElementById('floatingDiv').style.display = 'block'
-        var inputScore = document.getElementById('score')
-        inputScore.value = score
-        enviarDatos()
+       // inputScore.value = score
       }
     }
   
     //check for a win - more is when this score is reached
     function checkForWin() {
-      if (score === 269) {
+      if (score === 230) {
         score += ghostPoints;
-        document.getElementById('score').innerHTML = score;
+        //document.getElementById('score').innerHTML = score;
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', movePacman)
+        // sustituir por el modal gameover
         setTimeout(function(){ alert("You have WON!"); }, 500)
         
         document.getElementById('floatingDiv').style.display = 'block'
-        var inputScore = document.getElementById('score')
-        inputScore.value = score
+        //var inputScore = document.getElementById('score')
+        //inputScore.value = score
         enviarDatos()
       }
     }
+
+    $('#closeIntroModal').click(function() {
+      introModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+  })
 
     $('#closeAboutModal').click(function() {
       aboutModal.style.display = 'none'
@@ -348,6 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.addEventListener('keyup', movePacman)
   })
 
+    $('#showAbout').click(function() {
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        aboutModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+    })
+
     $('#closeSkillsModal').click(function() {
       skillsModal.style.display = 'none'
       ghosts.forEach(ghost => ghost.isScared = false)
@@ -355,8 +364,104 @@ document.addEventListener('DOMContentLoaded', () => {
       document.addEventListener('keyup', movePacman)
     })
 
+    $('#showSkills').click(function() {
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        skillsModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+    })
+
+    $('#closeProjectsModal').click(function() {
+      projectsModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
+
+    $('#showProjects').click(function() {
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        projectsModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+    })
+
+    $('#closeStuffModal').click(function() {
+      stuffModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
+
+    $('#showStuff').click(function() {
+      container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        stuffModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+    })
+
+    $('#closeContactModal').click(function() {
+      contactModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
+
+    $('#showContact').click(function() {
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        contactModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+    })
+
+    
+
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
   function enviarDatos() {
     container.style.display = "none"
     $(document).ready(function(){
@@ -415,4 +520,6 @@ $('#btnconsulta').click(function(){
     rankingTable.style.display = "inline-block"
     container.style.display = "none"
 })
+
+*/
 
