@@ -124,6 +124,7 @@ function createBoard() {
   
     //move pacman
     function movePacman(e) {
+      
       squares[pacmanCurrentIndex].classList.remove('pac-man')
       switch(e.keyCode) {
         case 37:
@@ -165,9 +166,17 @@ function createBoard() {
           pacmanCurrentIndex += width
           break
       }
+      console.log(pacmanCurrentIndex)
       squares[pacmanCurrentIndex].classList.add('pac-man')
+      
       pacDotEaten()
       powerPelletEaten()
+      //aboutPelletVisit() 
+      if (pacmanCurrentIndex === 326) {
+        //aboutModal.style.display = 'show'
+        console.log('weeeeeeeeeeeeeeeeeeeeeeeeeeee')
+        aboutModal.style.display= 'block'
+      }
       checkForGameOver()
       checkForWin()
     }
@@ -191,7 +200,14 @@ function createBoard() {
         squares[pacmanCurrentIndex].classList.remove('power-pellet')
       }
     }
-  
+    
+    //what happens when you visit about-pellet
+    function aboutPelletVisit() {
+      if (squares[pacmanCurrentIndex].classList.contains('about-pellet')) {
+        aboutModal.style.display = 'show'
+      }
+    }
+
     //make the ghosts stop flashing
     function unScareGhosts() {
       ghosts.forEach(ghost => ghost.isScared = false)
