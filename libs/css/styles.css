@@ -85,3 +85,23 @@ body {
 .scared-ghost {
     background-color: darkmagenta;
 }
+
+.about-pellet {
+    background-color: red;
+}
+
+.skills-pellet {
+    background-color: pink;
+}
+
+.a-projects-pellet {
+    background-color: cyan;
+}
+
+.p-projects-pellet {
+    background-color: darkorange;
+}
+
+.contact-pellet {
+    background-color: darkmagenta;
+}

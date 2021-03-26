@@ -5,16 +5,43 @@
 <head>
 <meta charset="utf-8">
 <title>Pac-man</title>
-<link rel="stylesheet" href="style.css">
-<script src="./jQuery/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="./libs/css/styles.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
+    
+            
+    <!-- About -->
+    <div id="about-modal">
+        <div class="modal-header">
+            <h5>About me...</h5>
+            <button class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Aquí va la descripcion</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 
-      <!-- === === Modal Form  === === -->
+    <!-- Skills -->
 
-      <div id="floatingDiv">
+    <!-- Academic Projects -->
+
+    <!-- Personal Projects -->
+
+    <!-- Contact -->
+
+    <div id="floatingDiv">
         <form method="POST" id="floatingForm">
             
 		    <label>Player: (Max: 12)</label>
@@ -31,9 +58,6 @@
 		    <p></p>
 		    <button id="btnguardar">Send</button>
             <br><br>
-
-            <!-- Con este botón hay que implementar una consulta asíncrona para no interferir en la operación de escritura-->
-            <!--<button id="btnconsulta" >See Ranking</button>-->
             <br><br>
         </form>
 
@@ -70,8 +94,8 @@
         <h3>Score:<span id="score"></span></h3>
     </div>
 
-
-<script src="app.js" charset="utf-8"></script>
+   
+<script src="./libs/js/pac-portfolio.js" charset="utf-8"></script>
 </body>
 </html>
 

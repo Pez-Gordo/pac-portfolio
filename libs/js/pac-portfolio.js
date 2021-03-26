@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const aboutModal = document.getElementById('about-modal')
+    aboutModal.style.display = 'none'
+
     const scoreDisplay = document.getElementById('score')
     const width = 28
     let ghostPoints = 0
@@ -7,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     const layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,9,1,1,0,0,0,8,0,0,0,0,0,0,0,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
       1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -17,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
       1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
+      1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,5,1,1,0,1,1,1,1,1,1,
       1,1,1,1,1,1,0,1,1,4,1,2,1,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
       4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
       1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
@@ -30,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
       1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
       1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
       1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
+      1,0,1,1,1,1,1,1,1,1,1,1,6,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
       1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-      1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,1,
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     ]
     // 0 - pac-dots
@@ -40,45 +43,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2 - ghost-lair
     // 3 - power-pellet
     // 4 - empty
-  
+
+    /* ==== Modals ==== */
+
+    // 5 - about
+    // 6 - skills
+    // 7 - academic projects
+    // 8 - personal projects
+    // 9 - contact
+
+
+    /*
 //implementing music
 var melody = document.createElement("audio");
 melody.src = "./pac-man.mp3";
 function playSound(s) {
     s.currentTime = 0;
     s.play();
+    
 }
+console.log(melody)
 playSound(melody);
+*/
 
 // variables for modals
 
 var rankingTable = document.getElementById("rankingTable")
 var modalForm = document.getElementById("floatingDiv")
-var container = document.getElementById("container")
+//var container = document.getElementById("container")
 
 rankingTable.style.display = "none"
 modalForm.style.display = "none"
 
 
 
-    const squares = []
+const squares = []
   
-    //create your board
-    function createBoard() {
-      for (let i = 0; i < layout.length; i++) {
+//create your board
+function createBoard() {
+    for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
         grid.appendChild(square)
         squares.push(square)
   
         //add layout to the board
         if(layout[i] === 0) {
-          squares[i].classList.add('pac-dot')
+            squares[i].classList.add('pac-dot')
         } else if (layout[i] === 1) {
-          squares[i].classList.add('wall')
+            squares[i].classList.add('wall')
         } else if (layout[i] === 2) {
-          squares[i].classList.add('ghost-lair')
+            squares[i].classList.add('ghost-lair')
         } else if (layout[i] === 3) {
-          squares[i].classList.add('power-pellet')
+            squares[i].classList.add('power-pellet')
+        } else if (layout[i] === 5) {
+            squares[i].classList.add('about-pellet')
+        } else if (layout[i] === 6) {
+            squares[i].classList.add('skills-pellet')
+        } else if (layout[i] === 7) {
+            squares[i].classList.add('a-projects-pellet')
+        } else if (layout[i] === 8) {
+            squares[i].classList.add('p-projects-pellet')
+        } else if (layout[i] === 9) {
+            squares[i].classList.add('contact-pellet')
         }
       }
     }
@@ -214,7 +240,7 @@ modalForm.style.display = "none"
             //move into that space
             ghost.currentIndex += direction
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
-        //else find a new random direction ot go in
+        //else find a new random direction to go in
         } else direction = directions[Math.floor(Math.random() * directions.length)]
   
         //if the ghost is currently scared
