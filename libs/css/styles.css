@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: #626262;
 }
 
 .container{
@@ -13,22 +13,26 @@ body {
 
 }
 
-.grid {
+#grid {
     
     display: flex;
     flex-wrap: wrap;
     width: 560px;
     height: 560px;
-    border: solid black;
+    border: 5px solid black;
     background-color: black;
     margin: 0 auto;
 }
 
-.grid div {
+#grid div {
     
     width: 20px;
     height: 20px;
     
+}
+
+#title {
+    padding-bottom: 30px;
 }
 
 #rankingTable {
@@ -88,20 +92,37 @@ body {
 
 .about-pellet {
     background-color: red;
+    border-radius: 3px;
 }
 
 .skills-pellet {
     background-color: pink;
+    border-radius: 3px;
 }
 
 .a-projects-pellet {
     background-color: cyan;
+    border-radius: 3px;
 }
 
 .p-projects-pellet {
     background-color: darkorange;
+    border-radius: 3px;
 }
 
 .contact-pellet {
     background-color: darkmagenta;
+    border-radius: 3px;
+}
+
+#about-modal {
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
+#closeAboutModal {
+    background-color: #626262;
 }

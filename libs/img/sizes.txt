@@ -1,0 +1,5 @@
+big ones -> 54px
+
+small ones -> 20px
+
+back button -> 32px

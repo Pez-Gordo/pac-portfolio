@@ -16,10 +16,8 @@
     <!-- About -->
     <div id="about-modal">
         <div class="modal-header">
-            <h5>About me...</h5>
-            <button class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <img src="./libs/img/titles/aboutme.png" alt="">
+            
         </div>
         <div class="modal-body">
             <div class="alert alert-success">
@@ -27,19 +25,85 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <button id="closeAboutModal" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
     </div>
 
     <!-- Skills -->
+    <div id="skills-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/myskills.png" alt="">
+            
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Aquí van las tecnologías que dominas</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeSkillsModal" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
 
     <!-- Academic Projects -->
+    <div id="projects-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/myprojects.png" alt="">
+            
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Aquí van los proyectos academicos</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeProjectsModal" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
 
     <!-- Personal Projects -->
-
+    <div id="stuff-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/pac-stuff.png" alt="">
+            
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Aquí van los proyectos personales</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeStuffModal" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
     <!-- Contact -->
+    <div id="contact-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/contact.png" alt="">
+            
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h6>Aquí va el formulario de contacto</h6>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeContactModal" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
+
+
+    <!-- === === === Record Score Modal === === === -->
 
     <div id="floatingDiv">
         <form method="POST" id="floatingForm">
@@ -89,13 +153,20 @@
     <!-- === === === Game Container === === === -->
 
     <div class="container" id="container">
-        <h1 class="title">Pac-Man</h1>
-        <div class="grid"></div>
-        <h3>Score:<span id="score"></span></h3>
+        <img id="title" src="./libs/img/titles/pac-portfolio.png" alt="pacfolio">
+        <div id="grid"></div>
+        <h3>
+            <img src="./libs/img/buttons/aboutme-small.png" alt="about me">
+            <img src="./libs/img/buttons/skills-small.png" alt="skills">
+            <img src="./libs/img/buttons/projects-small.png" alt="projects">
+            <img src="./libs/img/buttons/stuff-small.png" alt="stuff">
+            <img src="./libs/img/buttons/contact-small.png" alt="contact">
+        </h3>
+
     </div>
 
    
-<script src="./libs/js/pac-portfolio.js" charset="utf-8"></script>
+    <script src="./libs/js/pac-portfolio.js" charset="utf-8"></script>
 </body>
 </html>
 

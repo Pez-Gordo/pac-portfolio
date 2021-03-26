@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const aboutModal = document.getElementById('about-modal')
+    const skillsModal = document.getElementById('skills-modal')
+    const projectsModal = document.getElementById('projects-modal')
+    const stuffModal = document.getElementById('stuff-modal')
+    const contactModal = document.getElementById('contact-modal')
     aboutModal.style.display = 'none'
-
+    skillsModal.style.display = 'none'
+    projectsModal.style.display = 'none'
+    stuffModal.style.display = 'none'
+    contactModal.style.display = 'none'
+    const container = document.getElementById('container')
     const scoreDisplay = document.getElementById('score')
     const width = 28
     let ghostPoints = 0
     let score = 0
-    const grid = document.querySelector('.grid')
+    const grid = document.querySelector('#grid')
     const layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
       1,0,0,0,0,0,0,0,0,0,0,0,9,1,1,0,0,0,8,0,0,0,0,0,0,0,0,1,
@@ -53,35 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // 9 - contact
 
 
-    /*
-//implementing music
-var melody = document.createElement("audio");
-melody.src = "./pac-man.mp3";
-function playSound(s) {
-    s.currentTime = 0;
-    s.play();
+      /*
+    //implementing music
+    var melody = document.createElement("audio");
+    melody.src = "./pac-man.mp3";
+    function playSound(s) {
+      s.currentTime = 0;
+      s.play();
     
-}
-console.log(melody)
-playSound(melody);
-*/
+    }
+    console.log(melody)
+    playSound(melody);
+    */
 
-// variables for modals
+    // variables for modals
 
-var rankingTable = document.getElementById("rankingTable")
-var modalForm = document.getElementById("floatingDiv")
-//var container = document.getElementById("container")
+    var rankingTable = document.getElementById("rankingTable")
+    var modalForm = document.getElementById("floatingDiv")
+    //var container = document.getElementById("container")
 
-rankingTable.style.display = "none"
-modalForm.style.display = "none"
+    rankingTable.style.display = "none"
+    modalForm.style.display = "none"
 
 
 
-const squares = []
+    const squares = []
   
-//create your board
-function createBoard() {
-    for (let i = 0; i < layout.length; i++) {
+    //create your board
+    function createBoard() {
+      for (let i = 0; i < layout.length; i++) {
         const square = document.createElement('div')
         grid.appendChild(square)
         squares.push(square)
@@ -115,13 +123,7 @@ function createBoard() {
     //draw pacman onto the board
     let pacmanCurrentIndex = 490
     squares[pacmanCurrentIndex].classList.add('pac-man')
-    //get the coordinates of pacman on the grid with X and Y axis
-    // function getCoordinates(index) {
-    //   return [index % width, Math.floor(index / width)]
-    // }
-  
-    // console.log(getCoordinates(pacmanCurrentIndex))
-  
+    
     //move pacman
     function movePacman(e) {
       
@@ -171,12 +173,7 @@ function createBoard() {
       
       pacDotEaten()
       powerPelletEaten()
-      //aboutPelletVisit() 
-      if (pacmanCurrentIndex === 326) {
-        //aboutModal.style.display = 'show'
-        console.log('weeeeeeeeeeeeeeeeeeeeeeeeeeee')
-        aboutModal.style.display= 'block'
-      }
+      pelletVisit(pacmanCurrentIndex) 
       checkForGameOver()
       checkForWin()
     }
@@ -202,9 +199,41 @@ function createBoard() {
     }
     
     //what happens when you visit about-pellet
-    function aboutPelletVisit() {
-      if (squares[pacmanCurrentIndex].classList.contains('about-pellet')) {
-        aboutModal.style.display = 'show'
+    function pelletVisit(index) {
+      if (index === 326) {
+        //about
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        aboutModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+      }
+      if (index === 684) {
+        //pink skills
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        skillsModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+      }
+      if (index === 751) {
+        //cyan a projects
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        projectsModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+      }
+      if (index === 46) {
+        //darkorange p projects
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        stuffModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
+      }
+      if (index === 40) {
+        //darkmagenta contact
+        container.style.display = 'none'
+        ghosts.forEach(ghost => ghost.isScared = true)
+        contactModal.style.display= 'block'
+        document.removeEventListener('keyup', movePacman)
       }
     }
 
@@ -240,40 +269,45 @@ function createBoard() {
       })
   
     //move the Ghosts randomly
+    
     ghosts.forEach(ghost => moveGhost(ghost))
+    
+    
   
     function moveGhost(ghost) {
       const directions =  [-1, +1, width, -width]
       let direction = directions[Math.floor(Math.random() * directions.length)]
   
+      
       ghost.timerId = setInterval(function() {
-        //if the next squre your ghost is going to go to does not have a ghost and does not have a wall
-        if  (!squares[ghost.currentIndex + direction].classList.contains('ghost') &&
-          !squares[ghost.currentIndex + direction].classList.contains('wall') ) {
-            //remove the ghosts classes
-            squares[ghost.currentIndex].classList.remove(ghost.className)
-            squares[ghost.currentIndex].classList.remove('ghost', 'scared-ghost')
-            //move into that space
-            ghost.currentIndex += direction
+          //if the next squre your ghost is going to go to does not have a ghost and does not have a wall
+          if  (!squares[ghost.currentIndex + direction].classList.contains('ghost') &&
+            !squares[ghost.currentIndex + direction].classList.contains('wall') ) {
+              //remove the ghosts classes
+              squares[ghost.currentIndex].classList.remove(ghost.className)
+              squares[ghost.currentIndex].classList.remove('ghost', 'scared-ghost')
+              //move into that space
+              ghost.currentIndex += direction
+              squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
+          //else find a new random direction to go in
+          } else direction = directions[Math.floor(Math.random() * directions.length)]
+        
+          //if the ghost is currently scared
+          if (ghost.isScared) {
+            squares[ghost.currentIndex].classList.add('scared-ghost')
+          }
+        
+          //if the ghost is currently scared and pacman is on it
+          if(ghost.isScared && squares[ghost.currentIndex].classList.contains('pac-man')) {
+            squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
+            ghost.currentIndex = ghost.startIndex
+            //score +=100
+            ghostPoints += 100
             squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
-        //else find a new random direction to go in
-        } else direction = directions[Math.floor(Math.random() * directions.length)]
-  
-        //if the ghost is currently scared
-        if (ghost.isScared) {
-          squares[ghost.currentIndex].classList.add('scared-ghost')
-        }
-  
-        //if the ghost is currently scared and pacman is on it
-        if(ghost.isScared && squares[ghost.currentIndex].classList.contains('pac-man')) {
-          squares[ghost.currentIndex].classList.remove(ghost.className, 'ghost', 'scared-ghost')
-          ghost.currentIndex = ghost.startIndex
-          //score +=100
-          ghostPoints += 100
-          squares[ghost.currentIndex].classList.add(ghost.className, 'ghost')
-        }
-      checkForGameOver()
+          }
+          checkForGameOver()
       }, ghost.speed)
+      
     }
   
     //check for a game over
@@ -293,7 +327,7 @@ function createBoard() {
   
     //check for a win - more is when this score is reached
     function checkForWin() {
-      if (score === 274) {
+      if (score === 269) {
         score += ghostPoints;
         document.getElementById('score').innerHTML = score;
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
@@ -306,34 +340,49 @@ function createBoard() {
         enviarDatos()
       }
     }
+
+    $('#closeAboutModal').click(function() {
+      aboutModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
   })
 
-function enviarDatos() {
-  container.style.display = "none"
-  $(document).ready(function(){
-	  $('#btnguardar').click(function(){
-	  	var datos=$('#floatingForm').serialize();
-            console.log(datos)
-            //alert("espera !!!!!!")
-	  	$.ajax({
-	  		type: "POST",
-	  		url: "./php/insertar.php",
-	  		data: datos,
-	  		success: function(r){
-                    alert("Added registry to database")
-	  			console.log(r)
-                    //document.getElementById('floatingDiv').style.display = 'none'
-                    //document.getElementById('resultDiv').style.display = 'block'
-	  		},
-	  		error: function(jqXHR, textStatus, errorThrown) {
-            		console.log(textStatus, errorThrown);
-        		},
-	  	});
-            
-	  	return false;
-	  });
-	});
-}
+    $('#closeSkillsModal').click(function() {
+      skillsModal.style.display = 'none'
+      ghosts.forEach(ghost => ghost.isScared = false)
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
+
+})
+
+  function enviarDatos() {
+    container.style.display = "none"
+    $(document).ready(function(){
+  	  $('#btnguardar').click(function(){
+  	  	var datos=$('#floatingForm').serialize();
+              console.log(datos)
+              //alert("espera !!!!!!")
+  	  	$.ajax({
+  	  		type: "POST",
+  	  		url: "./php/insertar.php",
+  	  		data: datos,
+  	  		success: function(r){
+                      alert("Added registry to database")
+  	  			console.log(r)
+                      //document.getElementById('floatingDiv').style.display = 'none'
+                      //document.getElementById('resultDiv').style.display = 'block'
+  	  		},
+  	  		error: function(jqXHR, textStatus, errorThrown) {
+              		console.log(textStatus, errorThrown);
+          		},
+  	  	});
+
+  	  	return false;
+  	  });
+  	});
+  }
 
 function leerDatos() {
   $.ajax({
@@ -361,7 +410,9 @@ function leerDatos() {
 
 $('#btnconsulta').click(function(){
     leerDatos()
+    
     floatingDiv.style.display = "none"
     rankingTable.style.display = "inline-block"
     container.style.display = "none"
 })
+
