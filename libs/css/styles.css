@@ -222,7 +222,11 @@ body {
 }
 
 p {
-    font-size: 30px;
+    font-size: 25px;
+}
+
+.p-projects {
+    font-size: 35px;
 }
 
 #arrows {
@@ -240,7 +244,16 @@ p {
 }
 
 #perfil {
-    padding: 30px;
     border-radius: 30px;
+    transform: scale(0.50);
+
 }
 
+.alert {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body-about {
+    max-height: fit-content;
+}
