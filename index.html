@@ -5,6 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>Pac-Portfolio</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./libs/css/styles.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -20,7 +24,9 @@
         </div>
         <div class="modal-body">
             <div class="alert alert-success">
-                <h2>Hi! Welcome to my creative Pac-Portfolio! Rush up into safe colored shelter areas where you would be able to relax and know a little bit more about me. If you don't feel like eating pac-dots today you can also navigate the sections by clicking the links under the board. Good luck in any case and I hope to hear from you. Enjoy!</h2>
+                <h2>Hi! Welcome to my creative Pac-Portfolio. Rush up into safe colored areas where you can relax and know a little bit more about me.</h2> 
+                <h2>If you don't feel like eating pac-dots today you can also navigate the sections by clicking the links under the board.</h2>
+                <h2>Good luck in any case and I hope to hear from you. Enjoy!</h2>
                 
             </div>
         </div>
@@ -66,6 +72,7 @@
                     <li>Photography</li>
                     <li>Pets</li>
                 </ul>
+                <p id="para-hobbies" class="p-about">If you made it to here you must be a curious person. Please consider visiting the purple area to drop a message. I would like to hear about you :)</p>
             </div>
         </div>
         <div class="modal-footer">
@@ -78,12 +85,13 @@
     <!-- Fufi -->
     <div id="fufi-modal">
         <div class="modal-header">
-            <img src="./libs/img/titles/fufi.png" alt="">
+            <img id="fufi_profile" src="./libs/img/titles/fufi.png" alt="">
         </div>
-        <div class="modal-body-about">
+        <!--<div class="modal-body-about">-->
+            <div class="modal-body">
             <div class="alert alert-success">
                 <img id="perfil" src="libs/img/fufi.jpg" alt="">
-                <p class="p-about">This is Fufi, my flatmate. He eats prawns for breakfast and loves to roll on the floor under the sun like a sussage. He's obsessed with birds. Sometimes I think he dreams to be an Air Traffic Controller! XD </p>
+                <p class="p-about">This is Fufi, my flatmate. He eats prawns for breakfast and loves to roll on the floor under the sun like a sussage. In the evening he looks like a spring chasing small insects flying around the lawn. He's obsessed about birds. Sometimes I think he dreams to be an Air Traffic Controller! XD </p>
             </div>
         </div>
         <div class="modal-footer">
@@ -104,19 +112,36 @@
             </div>
         </div>
         <div class="modal-body">
-            <div class="alert alert-success">
-                <h1>Programming Languajes</h1>
-                <p class="p-skills">In my recent studies I've learnt the basics of, Java, C#, Python and I'm diving deep into JavaScript. I also reinforced my knowledge of HTML, CSS, and PHP</p>
-                <h1>Databases</h1>
-                <p class="p-skills">For my projects I rely on MySQL which I can use within a graphic environment or in the console.</p>
-                <h1>Graphic design</h1>
-                <p class="p-skills">I enjoy creating things. In my projects I use Gimp for image manipulation.</p>
-                <h1>Administrative tools</h1>
-                <p class="p-skills">Linux environments, securing servers, bash shell, ssh, LAMP.</p>
-                <h1>Cloud</h1>
-                <p class="p-skills">I recently gained interest in cloud computing. I deployed my portfolio on a VPS running Ubuntu Server.</p>
-                <h1>Interests</h1>
-                <p class="p-skills">In my spare time I'm currently learning modern technologies such as: NodeJS, React, MongoDB...</p>
+            <div class="work__container bd_grid">
+                <div class="skills_wrapper">
+                    <h1>Programming Languajes</h1>
+                    <p class="p-skills">In my recent studies I've learnt the basics of, Java, C#, Python and I'm diving more deeply into JavaScript. I also reinforced my knowledge of HTML, CSS, and PHP</p>    
+                </div>
+                <div class="skills_wrapper">
+                    <h1>Databases</h1>
+                    <p class="p-skills">For my projects I rely on MySQL which I can use within a graphic environment or in the console.</p>    
+                </div>
+                
+                <div class="skills_wrapper">
+                    <h1>Graphics</h1>
+                    <p class="p-skills">I enjoy creating things. In my projects I use Gimp and Rawtherapee for image manipulation.</p>
+                </div>
+                
+                <div class="skills_wrapper">
+                    <h1>Administrative tools</h1>
+                    <p class="p-skills">Linux environments, securing servers, bash shell, ssh, LAMP.</p>
+                </div>
+                
+                <div class="skills_wrapper">
+                    <h1>Cloud</h1>
+                    <p class="p-skills">I recently gained interest in cloud computing. I deployed my portfolio on a VPS running Ubuntu Server.</p>
+                </div>
+                
+                <div class="skills_wrapper">
+                    <h1>Interests</h1>
+                    <p class="p-skills">In my spare time I'm currently learning modern technologies such as: NodeJS, React, MongoDB...</p>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
