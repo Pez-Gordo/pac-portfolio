@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var rankingTable = document.getElementById("rankingTable")
     var modalForm = document.getElementById("floatingDiv")
-    //var container = document.getElementById("container")
 
     const squares = []
   
@@ -190,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
         score++
         squares[pacmanCurrentIndex].classList.remove('pac-dot')
-        //console.log(score)
       }
     }
   
@@ -208,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === 326) {
         //about
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         aboutModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
@@ -216,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === 684) {
         //pink skills
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         skillsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
@@ -224,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === 751) {
         //cyan a projects
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         projectsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
@@ -232,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === 46) {
         //darkorange p projects
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         stuffModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
@@ -240,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (index === 40) {
         //darkmagenta contact
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         contactModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
@@ -274,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
       new Ghost('clyde', 379, 500)
       ]
   
-    //ghosts.forEach(ghost => clearInterval(ghost.timerId))
 
     //draw my ghosts onto the grid
     ghosts.forEach(ghost => {
@@ -282,9 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
       squares[ghost.currentIndex].classList.add('ghost')
       })
   
-    //move the Ghosts randomly
     
-    //ghosts.forEach(ghost => moveGhost(ghost))
     
     
   
@@ -339,15 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForWin() {
       if (score === 230) {
         score += ghostPoints;
-        //document.getElementById('score').innerHTML = score;
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', movePacman)
-        // sustituir por el modal gameover
+        // sustituir por el modal victory
         setTimeout(function(){ alert("You have WON!"); }, 500)
         
         document.getElementById('floatingDiv').style.display = 'block'
-        //var inputScore = document.getElementById('score')
-        //inputScore.value = score
         enviarDatos()
       }
     }
@@ -356,7 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#closeIntroModal').click(function() {
       introModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -364,7 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#closeAboutModal').click(function() {
       aboutModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -372,15 +357,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#showAbout').click(function() {
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
-        hosts.forEach(ghost => clearInterval(ghost.timerId))
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
         aboutModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
     })
 
     $('#closeSkillsModal').click(function() {
       skillsModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -388,15 +371,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#showSkills').click(function() {
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
-        hosts.forEach(ghost => clearInterval(ghost.timerId))
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
         skillsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
     })
 
     $('.closeProjectsModal').click(function() {
       projectsModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -404,15 +385,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#showProjects').click(function() {
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
-        hosts.forEach(ghost => clearInterval(ghost.timerId))
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
         projectsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
     })
 
     $('.closeStuffModal').click(function() {
       stuffModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -420,15 +399,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#showStuff').click(function() {
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
-        hosts.forEach(ghost => clearInterval(ghost.timerId))
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
         stuffModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
     })
 
     $('#closeContactModal').click(function() {
       contactModal.style.display = 'none'
-      //ghosts.forEach(ghost => ghost.isScared = false)
       ghosts.forEach(ghost => moveGhost(ghost))
       container.style.display = "flex"
       document.addEventListener('keyup', movePacman)
@@ -436,14 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#showContact').click(function() {
         container.style.display = 'none'
-        //ghosts.forEach(ghost => ghost.isScared = true)
-        hosts.forEach(ghost => clearInterval(ghost.timerId))
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
         contactModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
     })
 
-   
-    
 
 })
 
