@@ -133,6 +133,8 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     text-align: center;
+    max-width: 600px;
+
 }
 
 #skills-modal {
@@ -181,6 +183,9 @@ body {
 }
 
 .closeButton {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
     background-color: #626262;
 }
 
@@ -219,3 +224,23 @@ body {
 p {
     font-size: 30px;
 }
+
+#arrows {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#firstrow {
+    justify-content: center;
+}
+
+#secondrow {
+    justify-content: center;
+}
+
+#perfil {
+    padding: 30px;
+    border-radius: 30px;
+}
+

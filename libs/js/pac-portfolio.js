@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const stuffModal = document.getElementById('stuff-modal')
     const contactModal = document.getElementById('contact-modal')
     const gameoverModal = document.getElementById('gameover-modal')
+  
+
     aboutModal.style.display = 'none'
     skillsModal.style.display = 'none'
     projectsModal.style.display = 'none'
@@ -14,8 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     contactModal.style.display = 'none'
     introModal.style.display = 'none'
     gameoverModal.style.display = 'none'
+    
+    
+
     const container = document.getElementById('container')
-    //const scoreDisplay = document.getElementById('score')
     const width = 28
     let ghostPoints = 0
     let score = 0
@@ -169,7 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
           pacmanCurrentIndex += width
           break
       }
-      console.log(pacmanCurrentIndex)
+      
+      //console.log(pacmanCurrentIndex)
       squares[pacmanCurrentIndex].classList.add('pac-man')
       
       pacDotEaten()
@@ -185,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (squares[pacmanCurrentIndex].classList.contains('pac-dot')) {
         score++
         squares[pacmanCurrentIndex].classList.remove('pac-dot')
-        console.log(score)
+        //console.log(score)
       }
     }
   
@@ -371,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keyup', movePacman)
     })
 
-    $('#closeProjectsModal').click(function() {
+    $('.closeProjectsModal').click(function() {
       projectsModal.style.display = 'none'
       ghosts.forEach(ghost => ghost.isScared = false)
       container.style.display = "flex"
@@ -385,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keyup', movePacman)
     })
 
-    $('#closeStuffModal').click(function() {
+    $('.closeStuffModal').click(function() {
       stuffModal.style.display = 'none'
       ghosts.forEach(ghost => ghost.isScared = false)
       container.style.display = "flex"
@@ -413,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keyup', movePacman)
     })
 
+   
     
 
 })
@@ -432,94 +438,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-  function enviarDatos() {
-    container.style.display = "none"
-    $(document).ready(function(){
-  	  $('#btnguardar').click(function(){
-  	  	var datos=$('#floatingForm').serialize();
-              console.log(datos)
-              //alert("espera !!!!!!")
-  	  	$.ajax({
-  	  		type: "POST",
-  	  		url: "./php/insertar.php",
-  	  		data: datos,
-  	  		success: function(r){
-                      alert("Added registry to database")
-  	  			console.log(r)
-                      //document.getElementById('floatingDiv').style.display = 'none'
-                      //document.getElementById('resultDiv').style.display = 'block'
-  	  		},
-  	  		error: function(jqXHR, textStatus, errorThrown) {
-              		console.log(textStatus, errorThrown);
-          		},
-  	  	});
-
-  	  	return false;
-  	  });
-  	});
-  }
-
-function leerDatos() {
-  $.ajax({
-    url: "./php/consultar.php",
-    method: 'POST',
-    dataType: 'json',
-    success: function(r) {
-        console.log("JSON result-->",r)
-        
-        if(r != "reachedMax") {
-            $('#tbodyRanking').empty()
-            var rows = ""
-            // Rendering Ranking Table
-            for(var i = 0; i < r.length; i++) {
-                rows += "<tr><td>" + r[i][1] + "</td><td>" + r[i][2] + "</td><td>" + r[i][3] + "</td>"
-            }
-            $('#tbodyRanking').append(rows)
-        }
-    }
-  })
-    
-}
-
-
-
-$('#btnconsulta').click(function(){
-    leerDatos()
-    
-    floatingDiv.style.display = "none"
-    rankingTable.style.display = "inline-block"
-    container.style.display = "none"
-})
-
-*/
 
