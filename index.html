@@ -39,7 +39,7 @@
         <div class="modal-body-about">
             <div class="alert alert-success">
                 <img id="perfil" src="libs/img/perfil.jpg" alt="">
-                <p>Hi! I am Enrique. Fullstack Junior Developer based in Northern Ireland. I'm creative, passionate and hardworker. I'd like to find a like minded team of people to work and grow with.</p>
+                <p class="p-about">Hi! I am Enrique. Fullstack Junior Developer based in Northern Ireland. I'm creative, passionate and hardworker. I'd like to find a like minded team of people to work and grow with.</p>
             </div>
         </div>
         <div class="modal-footer">
@@ -49,19 +49,78 @@
         </div>
     </div>
 
+    <!-- Hobbies -->
+    <div id="hobbies-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/hobbies.png" alt="">
+        </div>
+        <div class="modal-body-about">
+            <div class="alert alert-success">
+                <p id="para-hobbies" class="p-about">Some of my hobbies include:</p>
+                <ul id="list" class="p-skills">
+                    <li>Inline freeskate, freestyle slalom and rollerdance</li>
+                    <li>Bodyboard</li>
+                    <li>Enduro, cross and cruise cycling</li>
+                    <li>Motorbikes</li>
+                    <li>Play football with my friends</li>
+                    <li>Photography</li>
+                    <li>Pets</li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeHobbiesModal" class="closeButton" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
+
+    <!-- Fufi -->
+    <div id="fufi-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/fufi.png" alt="">
+        </div>
+        <div class="modal-body-about">
+            <div class="alert alert-success">
+                <img id="perfil" src="libs/img/fufi.jpg" alt="">
+                <p class="p-about">This is Fufi, my flatmate. He eats prawns for breakfast and loves to roll on the floor under the sun like a sussage. He's obsessed with birds. Sometimes I think he dreams to be an Air Traffic Controller! XD </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="closeFufiModal" class="closeButton" data-dismiss="modal">
+                <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+            </button>
+        </div>
+    </div>
+
     <!-- Skills -->
     <div id="skills-modal">
         <div class="modal-header">
             <img src="./libs/img/titles/myskills.png" alt="">
-            
+            <div>
+                <button class="closeSkillsModal closeButton" data-dismiss="modal">
+                    <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
+                </button>
+            </div>
         </div>
         <div class="modal-body">
             <div class="alert alert-success">
-                <h6>Aquí van las tecnologías que dominas</h6>
+                <h1>Programming Languajes</h1>
+                <p class="p-skills">In my recent studies I've learnt the basics of, Java, C#, Python and I'm diving deep into JavaScript. I also reinforced my knowledge of HTML, CSS, and PHP</p>
+                <h1>Databases</h1>
+                <p class="p-skills">For my projects I rely on MySQL which I can use within a graphic environment or in the console.</p>
+                <h1>Graphic design</h1>
+                <p class="p-skills">I enjoy creating things. In my projects I use Gimp for image manipulation.</p>
+                <h1>Administrative tools</h1>
+                <p class="p-skills">Linux environments, securing servers, bash shell, ssh, LAMP.</p>
+                <h1>Cloud</h1>
+                <p class="p-skills">I recently gained interest in cloud computing. I deployed my portfolio on a VPS running Ubuntu Server.</p>
+                <h1>Interests</h1>
+                <p class="p-skills">In my spare time I'm currently learning modern technologies such as: NodeJS, React, MongoDB...</p>
             </div>
         </div>
         <div class="modal-footer">
-            <button id="closeSkillsModal" class="closeButton" data-dismiss="modal">
+            <button class="closeSkillsModal closeButton" data-dismiss="modal">
                 <img src="./libs/img/buttons/back-button.png" alt="back to pac-portfolio">
             </button>
         </div>
@@ -257,7 +316,14 @@
         </div>
         <div class="modal-body">
             <div class="alert alert-success">
-                <h6>Aquí va el formulario de contacto</h6>
+                <div class="contact__container bd-grid">
+                    <form id="my_form" method="POST" onsubmit="submitForm(); return false;" class="contact__form">
+                        <input type="text" placeholder="Name" name="n" id="n" class="contact__input" required>
+                        <input type="mail" placeholder="Email" name="e" id="e" class="contact__input" required>
+                        <textarea name="m" placeholder="Your message here..." id="m" cols="0" rows="10" class="contact__input" required></textarea>
+                        <input type="image" src="./libs/img/buttons/send.png" value="Send" id="mybtn" class="contact__button button"><span id="status"></span>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -274,12 +340,29 @@
         </div>
         <div class="modal-body">
             <div class="alert alert-success">
-                <h6>Thank you for playing</h6>
+                <h1>Thank you for playing</h1>
             </div>
         </div>
         <div class="modal-footer">
-            <button id="playagain" class="closeButton" data-dismiss="modal">
-                <img src="./libs/img/buttons/play-again.png" alt="play again">
+            <button class="playagain closeButton" data-dismiss="modal">
+                <a href="./index.html"><img src="./libs/img/buttons/play-again.png" alt="play again"></a>
+            </button>
+        </div>
+    </div>
+
+    <!-- Victory -->
+    <div id="victory-modal">
+        <div class="modal-header">
+            <img src="./libs/img/titles/victory.png" alt="victory">
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success">
+                <h1>Thank you for playing</h1>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="playagain closeButton" data-dismiss="modal">
+                <a href="./index.html"><img src="./libs/img/buttons/play-again.png" alt="play again"></a>
             </button>
         </div>
     </div>

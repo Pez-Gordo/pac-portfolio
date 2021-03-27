@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const stuffModal = document.getElementById('stuff-modal')
     const contactModal = document.getElementById('contact-modal')
     const gameoverModal = document.getElementById('gameover-modal')
+    const hobbiesModal = document.getElementById('hobbies-modal')
+    const fufiModal = document.getElementById('fufi-modal')
+    const victoryModal = document.getElementById('victory-modal')
   
 
     aboutModal.style.display = 'none'
@@ -16,42 +19,44 @@ document.addEventListener('DOMContentLoaded', () => {
     contactModal.style.display = 'none'
     introModal.style.display = 'none'
     gameoverModal.style.display = 'none'
+    hobbiesModal.style.display = 'none'
+    fufiModal.style.display = 'none'
+    victoryModal.style.display = 'none'
     
     
 
     const container = document.getElementById('container')
     const width = 28
-    let ghostPoints = 0
     let score = 0
     const grid = document.querySelector('#grid')
     const layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,9,1,1,0,0,0,8,0,0,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,4,1,1,0,1,1,1,1,0,1,
+      1,3,1,1,1,1,0,9,1,1,1,1,0,1,1,0,1,1,8,1,1,0,1,1,1,1,3,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
       1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
       1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,5,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,1,2,1,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
+      1,1,10,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
+      1,1,4,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,5,1,0,1,1,1,1,1,1,
+      1,1,4,1,1,1,0,1,1,4,1,2,1,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
       4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
-      1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,1,2,1,4,1,1,0,1,1,1,1,1,1,
+      1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,4,1,1,
+      1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,1,2,1,4,1,1,0,1,1,1,11,1,1,
       1,1,1,1,1,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,1,1,1,1,1,
       1,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
       1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
       1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-      1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
+      1,1,1,0,1,1,0,6,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
       1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,1,1,1,1,1,1,6,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
       1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,0,0,0,1,
+      1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,7,1,1,0,1,
+      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     ]
     // 0 - pac-dots
@@ -115,6 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[i].classList.add('p-projects-pellet')
         } else if (layout[i] === 9) {
             squares[i].classList.add('contact-pellet')
+        } else if (layout[i] === 10) {
+            squares[i].classList.add('hobbies-pellet')
+        } else if (layout[i] === 11) {
+            squares[i].classList.add('fufi-pellet')
         }
       }
     }
@@ -173,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
           break
       }
       
-      //console.log(pacmanCurrentIndex)
+      console.log(pacmanCurrentIndex)
       squares[pacmanCurrentIndex].classList.add('pac-man')
       
       pacDotEaten()
@@ -203,41 +212,72 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //what happens when you visit about-pellet
     function pelletVisit(index) {
-      if (index === 326) {
+      if (index === 327) {
         //about
-        container.style.display = 'none'
-        ghosts.forEach(ghost => clearInterval(ghost.timerId))
-        aboutModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          aboutModal.style.display= 'block'
+        }, 300)
+        
+        
       }
-      if (index === 684) {
+      if (index === 623) {
         //pink skills
-        container.style.display = 'none'
-        ghosts.forEach(ghost => clearInterval(ghost.timerId))
-        skillsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          skillsModal.style.display= 'block'
+        }, 300)
       }
-      if (index === 751) {
+      if (index === 723) {
         //cyan a projects
-        container.style.display = 'none'
-        ghosts.forEach(ghost => clearInterval(ghost.timerId))
-        projectsModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          projectsModal.style.display= 'block'
+        }, 300)
       }
-      if (index === 46) {
+      if (index === 102) {
         //darkorange p projects
-        container.style.display = 'none'
-        ghosts.forEach(ghost => clearInterval(ghost.timerId))
-        stuffModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          stuffModal.style.display= 'block'
+        }, 300)
       }
-      if (index === 40) {
+      if (index === 91) {
         //darkmagenta contact
-        container.style.display = 'none'
-        ghosts.forEach(ghost => clearInterval(ghost.timerId))
-        contactModal.style.display= 'block'
         document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          contactModal.style.display= 'block'
+        }, 300)
       }
+      if (index === 282) {
+        //darkmagenta contact
+        document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          hobbiesModal.style.display= 'block'
+        }, 300)
+      }
+      if (index === 445) {
+        //darkmagenta contact
+        document.removeEventListener('keyup', movePacman)
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        setTimeout(function() {
+          container.style.display = 'none'
+          fufiModal.style.display= 'block'
+        }, 300)
+      }
+      
     }
 
     //make the ghosts stop flashing
@@ -327,15 +367,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //check for a win - more is when this score is reached
     function checkForWin() {
-      if (score === 230) {
-        score += ghostPoints;
+      if (score === 234) {
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener('keyup', movePacman)
         // sustituir por el modal victory
-        setTimeout(function(){ alert("You have WON!"); }, 500)
-        
-        document.getElementById('floatingDiv').style.display = 'block'
-        enviarDatos()
+        //setTimeout(function(){ alert("You have WON!"); }, 500)
+        victoryModal.style.display = 'flex'
+        container.style.display = 'none'
       }
     }
 
@@ -362,10 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keyup', movePacman)
     })
 
-    $('#closeSkillsModal').click(function() {
+    $('.closeSkillsModal').click(function() {
       skillsModal.style.display = 'none'
       ghosts.forEach(ghost => moveGhost(ghost))
-      container.style.display = "flex"
+      container.style.display = 'flex'
       document.addEventListener('keyup', movePacman)
     })
 
@@ -418,6 +456,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.removeEventListener('keyup', movePacman)
     })
 
+    $('#closeHobbiesModal').click(function() {
+      hobbiesModal.style.display = 'none'
+      ghosts.forEach(ghost => moveGhost(ghost))
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
+
+    $('#closeFufiModal').click(function() {
+      fufiModal.style.display = 'none'
+      ghosts.forEach(ghost => moveGhost(ghost))
+      container.style.display = "flex"
+      document.addEventListener('keyup', movePacman)
+    })
 
 })
 

@@ -36,15 +36,6 @@ body {
     padding-bottom: 30px;
 }
 
-#rankingTable {
-    margin: 0 auto;
-    display: none;
-}
-
-#floatingDiv {
-  margin: 0 auto;
-  display: none;
-}
 
 .wall {
     background-color: blue;
@@ -116,6 +107,18 @@ body {
     border-radius: 3px;
 }
 
+.hobbies-pellet {
+    background-color: #47b81d;
+    border-radius: 3px;
+
+}
+
+.fufi-pellet {
+    background-color: white;
+    border-radius: 3px;
+
+}
+
 #intro-modal {
     padding-top: 30px;
     display: flex;
@@ -135,6 +138,26 @@ body {
     text-align: center;
     max-width: 600px;
 
+}
+
+#hobbies-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    max-width: 600px;
+}
+
+#fufi-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    max-width: 600px;
 }
 
 #skills-modal {
@@ -182,11 +205,21 @@ body {
     text-align: center;
 }
 
+#victory-modal {
+    padding-top: 30px;
+    display: flex;
+    margin: auto auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+}
+
 .closeButton {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px;
     background-color: #626262;
+    cursor: pointer;
 }
 
 .work__container{
@@ -229,6 +262,15 @@ p {
     font-size: 35px;
 }
 
+.p-skills {
+    font-size: 22px;
+}
+
+.p-about {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 #arrows {
     display: flex;
     justify-content: center;
@@ -245,7 +287,7 @@ p {
 
 #perfil {
     border-radius: 30px;
-    transform: scale(0.50);
+    transform: scale(0.750);
 
 }
 
@@ -256,4 +298,36 @@ p {
 
 .modal-body-about {
     max-height: fit-content;
+}
+
+.contact__input{
+    width: 100%;
+    font-size: 25px;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+}
+.contact__button{
+  display: flex;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+textarea {
+    resize: none;
+}
+
+#para-hobbies {
+    margin-top: 150px;
+}
+
+#list {
+    list-style: none;
 }
